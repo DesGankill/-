@@ -14,27 +14,25 @@ grep '.*' /etc/passwd | cut -d: -f1 | sort
 
 ## Задача 2
 
-Вывести данные /etc/protocols в отформатированном и отсортированном порядке для 5 наибольших портов, как показано в примере ниже:
+awk '{print $2, $1}' /etc/protocols | sort -nr | head -n 5
 
-```
-[root@localhost etc]# cat /etc/protocols ...
-142 rohc
-141 wesp
-140 shim6
-139 hip
-138 manet
-```
+![изображение](https://github.com/user-attachments/assets/f7cd5921-5632-4914-8e9d-a3f1c50de9ba)
+
 
 ## Задача 3
 
-Написать программу banner средствами bash для вывода текстов, как в следующем примере (размер баннера должен меняться!):
+#!/bin/bash
+text=$*
+length=${#text}
+for _ in $(seq 1 $((length + 2))); do
+    line+="-"
+done
+echo "+${line}+"
+echo "| ${text} |"
+echo "+${line}+"
 
-```
-[root@localhost ~]# ./banner "Hello from RTU MIREA!"
-+-----------------------+
-| Hello from RTU MIREA! |
-+-----------------------+
-```
+![изображение](https://github.com/user-attachments/assets/e7ddd073-e1c3-4f6a-afbc-7d8a29639428)
+
 
 Перед отправкой решения проверьте его в ShellCheck на предупреждения.
 
@@ -50,13 +48,14 @@ h hello include int main n printf return stdio void world
 
 ## Задача 5
 
-Написать программу для регистрации пользовательской команды (правильные права доступа и копирование в /usr/local/bin).
+#!/bin/bash
+file=$1
+chmod 755 "./$file"
+sudo cp "$file" /usr/local/bin/
+echo "compleat"
 
-Например, пусть программа называется reg:
+![изображение](https://github.com/user-attachments/assets/6a6a0446-583d-4456-8857-42c17a0cb4fa)
 
-```
-./reg banner
-```
 
 В результате для banner задаются правильные права доступа и сам banner копируется в /usr/local/bin.
 
