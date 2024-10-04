@@ -37,14 +37,12 @@ echo "+${line}+"
 Перед отправкой решения проверьте его в ShellCheck на предупреждения.
 
 ## Задача 4
+#!/bin/bash
+file="$1"
+id=$(grep -o -E '\b[a-zA-Z]*\b' "$file" | sort -u)
 
-Написать программу для вывода всех идентификаторов (по правилам C/C++ или Java) в файле (без повторений).
+![изображение](https://github.com/user-attachments/assets/6ac61b4e-2775-44d9-b7c2-23576127c8bb)
 
-Пример для hello.c:
-
-```
-h hello include int main n printf return stdio void world
-```
 
 ## Задача 5
 
@@ -54,10 +52,8 @@ chmod 755 "./$file"
 sudo cp "$file" /usr/local/bin/
 echo "compleat"
 
-![изображение](https://github.com/user-attachments/assets/6a6a0446-583d-4456-8857-42c17a0cb4fa)
+![изображение](https://github.com/user-attachments/assets/c6e53522-6e87-47a5-a746-fe07e8152902)
 
-
-В результате для banner задаются правильные права доступа и сам banner копируется в /usr/local/bin.
 
 ## Задача 6
 
